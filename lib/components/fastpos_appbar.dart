@@ -88,3 +88,6 @@
       //     ],
       //   ),
       // ),
+
+
+      /////////////app bar kullanmıştım ama uygulamanın görüntüsü açısından vazgeçtim ve footer ekledim. İstenirse kullanılabilir.
