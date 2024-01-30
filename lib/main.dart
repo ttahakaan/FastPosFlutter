@@ -1,4 +1,4 @@
-import 'package:fastposapplication/fastpos_web_view.dart';
+import 'package:fastposapplication/view/fastpos_web_view.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
