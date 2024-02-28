@@ -1,5 +1,6 @@
 import 'package:fastposapplication/view/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:wakelock/wakelock.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -35,57 +36,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.grey.shade900,
         ),
       ),
-      home: SplashScreen(), // SplashScreen'ı başlangıç ekranı olarak belirle
-    );
-  }
-}
-
-class FastPosWebView extends StatefulWidget {
-  const FastPosWebView({Key? key, required this.controller}) : super(key: key);
-
-  final WebViewController controller;
-
-  @override
-  State<FastPosWebView> createState() => _FastPosWebViewState();
-}
-
-class _FastPosWebViewState extends State<FastPosWebView> {
-  var loadingPercentage = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    widget.controller
-      ..setNavigationDelegate(NavigationDelegate(onPageStarted: (url) {
-        setState(() {
-          loadingPercentage = 0;
-        });
-      }, onProgress: (progress) {
-        setState(() {
-          loadingPercentage = progress;
-        });
-      }, onPageFinished: (url) {
-        setState(() {
-          loadingPercentage = 100;
-        });
-      }))
-      ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..addJavaScriptChannel("Snackbar", onMessageReceived: (message) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text(message.message)));
-      });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        WebViewWidget(controller: widget.controller),
-        if (loadingPercentage < 100)
-          LinearProgressIndicator(
-            value: loadingPercentage / 100.0,
-          )
-      ],
+      home: SplashScreen(), // uygulama splash screenden başlayacak
     );
   }
 }

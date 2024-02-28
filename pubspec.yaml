@@ -38,6 +38,7 @@ dependencies:
   webview_flutter: ^4.4.1
   google_fonts: ^6.1.0
   wakelock: ^0.6.2
+  url_launcher: ^6.2.4
 
 dev_dependencies:
   flutter_test:

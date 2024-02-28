@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+class SecondWebView extends StatefulWidget {
+  const SecondWebView({Key? key}) : super(key: key);
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<SecondWebView> createState() => _SecondWebViewState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SecondWebViewState extends State<SecondWebView> {
   late final WebViewController _controller;
 
   bool _isLoading = true;
@@ -26,30 +26,25 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> _loadWebView() async {
     await Future.delayed(Duration(
         seconds:
-            3)); // zaten bir sonraki adımda yüklenme durum kontrolü yapıldığı için burada 2 saniye isim görünülürlüğü açısından bekletiyorum.
+            1)); // zaten bir sonraki adımda yüklenme durum kontrolü yapıldığı için burada 2 saniye isim görünülürlüğü açısından bekletiyorum.
 
     setState(() {
       _isLoading = false;
     });
 
-    _controller.loadRequest(Uri.parse("https://fastpos.vercel.app/print-test"));
+    _controller.loadRequest(Uri.parse("https://fastpos.vercel.app"));
   }
 
   @override
   Widget build(BuildContext context) {
     return _isLoading
         ? Scaffold(
-            backgroundColor: Color(
-                0xFF5271FF), // arkaplan rengini logonun rengiyle aynı yaptım.
+            backgroundColor: Color.fromARGB(255, 255, 255,
+                255), // arkaplan rengini logonun rengiyle aynı yaptım.
             body: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    'assets/fastposlogo.png',
-                    width: 150,
-                    height: 150,
-                  ),
                   SizedBox(height: 16),
                   TweenAnimationBuilder(
                     duration: Duration(seconds: 1),
@@ -61,11 +56,11 @@ class _SplashScreenState extends State<SplashScreen> {
                       );
                     },
                     child: Text(
-                      "AI powered Cloud POS",
+                      "Printing",
                       style: GoogleFonts.libreFranklin(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: const Color.fromARGB(255, 0, 0, 0),
                       ),
                     ),
                   ),
