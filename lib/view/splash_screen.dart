@@ -32,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
       _isLoading = false;
     });
 
-    _controller.loadRequest(Uri.parse("https://fastpos.vercel.app/print-test"));
+    _controller.loadRequest(Uri.parse("https://fastpos.vercel.app"));
   }
 
   @override

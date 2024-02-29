@@ -1,5 +1,6 @@
 import 'package:fastposapplication/view/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:wakelock/wakelock.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -11,14 +12,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /// Ekrann yatay durma ile sabitli. sağ ve sol yatayda kullanıma izin verilmesi komutu. Emulatorum küçük olduğundan kapattım şuan.
-    /// ////////////////////////////
-    // SystemChrome.setPreferredOrientations([
-    //   DeviceOrientation.landscapeLeft,
-    //   DeviceOrientation.landscapeRight,
-    // ]);
-    /////////////////////////////////////
+    // / Ekrann yatay durma ile sabitli. sağ ve sol yatayda kullanıma izin verilmesi komutu.
+    // / ////////////////////////////
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
+    /////////////////////////////////// ekranın açık kalma komutu
     Wakelock.enable();
+    ///////////////////////////
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
